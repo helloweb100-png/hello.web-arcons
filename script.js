@@ -26,6 +26,7 @@
     servicios: 'Hola Grupo Arcons, quiero cotizar el servicio de recolección para mi empresa o negocio.',
     proceso: 'Hola Grupo Arcons, quiero agendar mi primera recolección.',
     materiales: 'Hola Grupo Arcons, quiero contarles qué residuos genero para que me orienten.',
+    composta: 'Hola Grupo Arcons, quiero saber cómo darle destino a mis residuos orgánicos (composta y humus).',
     final: 'Hola Grupo Arcons, quiero reciclar con ustedes. ¿Cómo empezamos en mi zona?',
     fab: 'Hola Grupo Arcons, tengo una duda sobre el servicio de recolección.'
   };

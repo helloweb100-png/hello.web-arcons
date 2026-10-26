@@ -1,7 +1,9 @@
 /* ==========================================================================
    GRUPO ARCONS · Landing premium
-   Mobile-first. Tema oscuro único (verde bosque del logo) con esmeralda como
-   color de acción y dorado como detalle de marca.
+   Mobile-first. Base oscura (verde bosque del logo) con esmeralda como color
+   de acción y dorado como detalle de marca. Las secciones alternan temas
+   (claro, azul agua y verde) para reflejar el mundo ecológico y de reciclaje;
+   ver "Temas por sección".
 
    Sistema de formas (una sola regla en toda la página):
    - Botones y navegación: píldora completa
@@ -57,6 +59,15 @@
   --gold: #c9a063;
   --gold-2: #ecd3a3;
 
+  /* Azul agua (reciclaje / agua limpia) */
+  --blue: #0c7ea6;
+  --blue-d: #08536f;
+  --blue-l: #e3f3f9;
+
+  /* Acento para texto e iconos: cambia según el tema de la sección para mantener el contraste */
+  --acc: var(--em);
+  --acc-2: var(--em-2);
+
   --r-card: 20px;
   --r-in: 14px;
   --r-pill: 999px;
@@ -78,6 +89,68 @@
 }
 @media (min-width: 768px) {
   :root { --gut: 2rem; }
+}
+
+/* ---------- Temas por sección ----------
+   Cada tema solo redefine tokens; tarjetas, textos y botones se adaptan solos.
+   Los ajustes puntuales de componentes están en "Temas · ajustes de componentes". */
+.theme-light, .theme-blue, .theme-green { background-color: var(--bg); color: var(--tx); }
+
+.theme-light {
+  --bg: #f4faf7;
+  --bg-2: #e9f5ef;
+  --surface: #ffffff;
+  --surface-2: #eef7f2;
+  --surface-3: #dcefe6;
+  --line: rgba(7, 70, 56, 0.14);
+  --line-2: rgba(7, 70, 56, 0.26);
+  --tx: #0a2a24;
+  --tx-2: #3a5a51;
+  --tx-3: #55756b;
+  --acc: #087f57;
+  --acc-2: #05603f;
+}
+/* Variante clara con fondo azul hielo */
+.theme-sky {
+  --bg: #eaf6fb;
+  --bg-2: #dff0f8;
+  --surface-2: #e3f2f9;
+  --surface-3: #cfe6f1;
+  --line: rgba(8, 83, 111, 0.15);
+  --line-2: rgba(8, 83, 111, 0.28);
+  --tx: #072f3c;
+  --tx-2: #34596a;
+  --tx-3: #46697c;
+}
+
+.theme-blue {
+  --bg: #07445c;
+  --bg-2: #0a5a78;
+  --surface: #0c6a8c;
+  --surface-2: #1077a0;
+  --surface-3: #1488b3;
+  --line: rgba(200, 238, 255, 0.18);
+  --line-2: rgba(200, 238, 255, 0.34);
+  --tx: #f2fbff;
+  --tx-2: #c9e8f4;
+  --tx-3: #a6d4e6;
+  --acc: #8ff5cf;
+  --acc-2: #c2fbe6;
+}
+
+.theme-green {
+  --bg: #0a3d2e;
+  --bg-2: #0d4a37;
+  --surface: #115a41;
+  --surface-2: #146b4c;
+  --surface-3: #1a7d59;
+  --line: rgba(190, 255, 220, 0.16);
+  --line-2: rgba(190, 255, 220, 0.3);
+  --tx: #f1fbf5;
+  --tx-2: #c6e6d4;
+  --tx-3: #a2d1b9;
+  --acc: #7df0bd;
+  --acc-2: #b6fada;
 }
 
 /* ---------- Reset / base ---------- */
@@ -119,7 +192,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.04; text-
 ::selection { background: var(--em); color: var(--ink); }
 
 :focus-visible {
-  outline: 2px solid var(--em-2);
+  outline: 2px solid var(--acc-2);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -167,7 +240,7 @@ body::after {
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--em);
+  color: var(--acc);
 }
 .eyebrow--dark { color: var(--ink); }
 
@@ -228,7 +301,7 @@ body::after {
   color: var(--tx); background: rgba(255, 255, 255, 0.03); border-color: var(--line-2);
 }
 .btn--ghost:hover { background: rgba(255, 255, 255, 0.09); border-color: rgba(167, 243, 208, 0.45); }
-.btn--outline { color: var(--em); border-color: rgba(25, 210, 142, 0.6); background: transparent; }
+.btn--outline { color: var(--acc); border-color: rgba(25, 210, 142, 0.6); background: transparent; }
 .btn--outline .btn__ico { background: var(--em); color: var(--ink); }
 .btn--outline:hover { background: var(--em); color: var(--ink); }
 .btn--outline:hover .btn__ico { background: var(--ink); color: var(--em); }
@@ -337,7 +410,7 @@ body.menu-open .nav { z-index: 70; transform: none; }
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 40px -22px rgba(0, 0, 0, 0.7);
   transition: background-color 0.4s, border-color 0.4s;
 }
-.nav.is-solid .nav__bar { background: rgba(1, 26, 22, 0.84); border-color: var(--line-2); }
+.nav.is-solid .nav__bar { background: rgba(1, 26, 22, 0.92); border-color: var(--line-2); }
 
 .brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; margin-right: auto; }
 .brand__mark { width: 34px; height: 34px; object-fit: contain; }
@@ -398,6 +471,7 @@ body.menu-open .nav { z-index: 70; transform: none; }
 .menu.is-open .menu__links a:nth-child(4) { transition-delay: 0.43s; }
 .menu.is-open .menu__links a:nth-child(5) { transition-delay: 0.49s; }
 .menu.is-open .menu__links a:nth-child(6) { transition-delay: 0.55s; }
+.menu.is-open .menu__links a:nth-child(7) { transition-delay: 0.61s; }
 .menu__foot { display: grid; gap: 1.2rem; color: var(--tx-2); }
 @media (min-width: 1024px) { .menu { display: none; } }
 
@@ -440,8 +514,8 @@ body.menu-open .nav { z-index: 70; transform: none; }
   animation: drift-b 30s ease-in-out infinite alternate;
 }
 .hero__aurora i:nth-child(3) {
-  width: 40vmax; height: 40vmax; top: 18%; left: 24%;
-  background: radial-gradient(closest-side, rgba(25, 210, 142, 0.12), transparent);
+  width: 46vmax; height: 46vmax; top: 14%; left: 20%;
+  background: radial-gradient(closest-side, rgba(40, 170, 220, 0.2), transparent);
   animation: drift-c 20s ease-in-out infinite alternate;
 }
 .hero::after {
@@ -560,7 +634,7 @@ html:not(.js) .hv__edge, html.failsafe .hv__edge { stroke-dashoffset: 0; }
 }
 .manifesto__text mark { background: none; color: inherit; }
 .mw { display: inline-block; opacity: 0.16; transition: color 0.4s; }
-.mw.is-hot { color: var(--em); }
+.mw.is-hot { color: var(--acc); }
 
 /* ==========================================================================
    IMAGEN QUE SE EXPANDE
@@ -628,7 +702,7 @@ html:not(.js) .hv__edge, html.failsafe .hv__edge { stroke-dashoffset: 0; }
 .card__body { position: relative; z-index: 2; display: grid; gap: 0.7rem; padding: clamp(1.3rem, 2.4vw, 2rem); width: 100%; }
 .card h3 { font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.8rem); letter-spacing: -0.028em; line-height: 1.1; }
 .card p { color: var(--tx-2); max-width: 38ch; }
-.card .i--lg { color: var(--em); }
+.card .i--lg { color: var(--acc); }
 .card__img {
   position: absolute; left: 0; top: -7%; width: 100%; height: 114%; object-fit: cover; z-index: -2;
   transition: scale 1.4s var(--e-out);
@@ -741,6 +815,7 @@ html:not(.js) .hv__edge, html.failsafe .hv__edge { stroke-dashoffset: 0; }
 .mat__fig { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--r-card); background: var(--surface); border: 1px solid var(--line); }
 .mat__fig img { width: 100%; height: 100%; object-fit: cover; transition: scale 1.4s var(--e-out); }
 .mat:hover .mat__fig img { scale: 1.06; }
+.mat__fig--org img { object-position: 50% 55%; }
 .mat__txt { padding: 1.15rem 0.2rem 0; display: grid; gap: 0.45rem; }
 .mat h3 { font-size: clamp(1.45rem, 1.2rem + 0.8vw, 1.95rem); letter-spacing: -0.03em; }
 .mat p { color: var(--tx-2); max-width: 36ch; }
@@ -771,6 +846,58 @@ html:not(.js) .hv__edge, html.failsafe .hv__edge { stroke-dashoffset: 0; }
 .mats.is-pinned .mats__bar span { display: block; height: 100%; background: var(--em); transform-origin: 0 50%; transform: scaleX(0); }
 
 /* ==========================================================================
+   COMPOSTA Y HUMUS
+   ========================================================================== */
+.compost { isolation: isolate; overflow: clip; background: linear-gradient(165deg, #0f5c43 0%, #0b4533 55%, #093a2c 100%); }
+.compost__hex {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: var(--hex); background-size: 78px 135px;
+  -webkit-mask-image: linear-gradient(200deg, #000 0%, transparent 62%); mask-image: linear-gradient(200deg, #000 0%, transparent 62%);
+}
+
+.cstages { display: grid; gap: 1rem; }
+.cstage {
+  display: flex; flex-direction: column; overflow: hidden;
+  border-radius: var(--r-card); border: 1px solid var(--line-2); background: var(--surface);
+}
+.cstage__fig { position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: var(--surface-2); }
+.cstage__fig img { width: 100%; height: 100%; object-fit: cover; transition: scale 1.4s var(--e-out); }
+.cstage__fig--tall img { object-position: 50% 45%; }
+.cstage:hover .cstage__fig img { scale: 1.05; }
+.cstage__n {
+  position: absolute; left: 1rem; top: 1rem; z-index: 2;
+  display: grid; place-items: center; width: 52px; height: 58px;
+  background: var(--em); color: var(--ink);
+  font-family: var(--ff-mono); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.04em;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.cstage__body { position: relative; z-index: 2; display: grid; gap: 0.55rem; padding: clamp(1.2rem, 2.4vw, 1.7rem) clamp(1.2rem, 2.4vw, 1.7rem) clamp(1.4rem, 2.6vw, 1.9rem); }
+.cstage h3 { font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.8rem); letter-spacing: -0.028em; line-height: 1.1; }
+.cstage p { color: var(--tx-2); max-width: 36ch; }
+
+.cfield__label { margin: clamp(2.6rem, 6vw, 4.2rem) 0 1.1rem; }
+.cfield { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.cph { position: relative; overflow: hidden; aspect-ratio: 1 / 1; border-radius: var(--r-card); border: 1px solid var(--line); background: var(--surface); }
+.cph--w { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+.cph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: scale 1.4s var(--e-out); }
+.cph:hover img { scale: 1.05; }
+.cph figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 2.4rem 1rem 0.85rem;
+  background: linear-gradient(to top, rgba(2, 30, 22, 0.88), rgba(2, 30, 22, 0));
+  font-family: var(--ff-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--tx);
+}
+
+@media (min-width: 900px) {
+  .cstages { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+  .cfield { grid-template-columns: repeat(12, 1fr); grid-auto-rows: clamp(220px, 24vw, 300px); gap: 1rem; }
+  .cph, .cph--w { aspect-ratio: auto; }
+  .cph--1 { grid-column: 1 / span 7; }
+  .cph--2 { grid-column: 8 / span 5; }
+  .cph--3, .cph--4, .cph--5 { grid-column: span 4; }
+}
+
+/* ==========================================================================
    ALCANCE
    ========================================================================== */
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.2rem; margin-bottom: clamp(2.6rem, 6vw, 4.4rem); }
@@ -789,7 +916,7 @@ html:not(.js) .hv__edge, html.failsafe .hv__edge { stroke-dashoffset: 0; }
 .scope__col li { display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 0; font-size: 1.05rem; }
 .scope__col li + li { border-top: 1px solid var(--line); }
 .scope__col--yes { border-color: rgba(25, 210, 142, 0.34); background: linear-gradient(160deg, rgba(25, 210, 142, 0.15), rgba(25, 210, 142, 0.03) 55%), var(--surface); }
-.scope__col--yes .i { color: var(--em); }
+.scope__col--yes .i { color: var(--acc); }
 .scope__col--no { background: var(--bg-2); }
 .scope__col--no .i { color: var(--tx-3); }
 .scope__note { margin-top: 1.2rem; color: var(--tx-2); max-width: 36ch; }
@@ -877,9 +1004,9 @@ html:not(.js) .hv__edge, html.failsafe .hv__edge { stroke-dashoffset: 0; }
   font-size: clamp(1.08rem, 1rem + 0.45vw, 1.35rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; color: var(--tx);
   transition: color 0.3s;
 }
-.acc__btn:hover { color: var(--em-2); }
+.acc__btn:hover { color: var(--acc-2); }
 .acc__btn .i {
-  width: 40px; height: 40px; padding: 10px; border-radius: 50%; border: 1px solid var(--line-2); color: var(--em);
+  width: 40px; height: 40px; padding: 10px; border-radius: 50%; border: 1px solid var(--line-2); color: var(--acc);
   transition: transform 0.6s var(--e-out), background-color 0.3s, color 0.3s;
 }
 .acc__btn[aria-expanded="true"] .i { transform: rotate(135deg); background: var(--em); color: var(--ink); border-color: var(--em); }
@@ -895,7 +1022,48 @@ html:not(.js) .hv__edge, html.failsafe .hv__edge { stroke-dashoffset: 0; }
 }
 
 /* ==========================================================================
-   CTA FINAL (único bloque de color)
+   TEMAS · ajustes de componentes
+   Lo que los tokens no resuelven solos: colores fijos de tarjetas, trazos y degradados.
+   ========================================================================== */
+/* Marquesina: banda azul agua */
+.marquee.theme-blue {
+  background: linear-gradient(100deg, var(--blue-d), var(--blue) 50%, var(--blue-d));
+  border-block-color: rgba(255, 255, 255, 0.22);
+}
+.marquee.theme-blue .hx { background: var(--em-2); }
+
+/* Servicios (claro): las tarjetas con foto o color intenso conservan texto claro */
+.theme-light .card { box-shadow: 0 22px 44px -32px rgba(7, 70, 56, 0.45); }
+.theme-light .card--a, .theme-light .card--b, .theme-light .card--d, .theme-light .card--e {
+  --tx: #e9f4ef; --tx-2: #cfe5db; --acc: var(--em);
+  color: var(--tx);
+}
+.theme-light .card--c { background: var(--blue-l); border-color: rgba(12, 126, 166, 0.24); }
+.theme-light .miniroute__line { border-top-color: rgba(8, 83, 111, 0.35); }
+.theme-light .card--d {
+  background: linear-gradient(150deg, var(--blue) 0%, var(--blue-d) 100%);
+  border-color: rgba(92, 200, 234, 0.45);
+}
+.theme-light .card--d .i--lg { color: #b4f6dc; }
+.theme-light .card--d h3 { color: var(--tx); }
+.theme-light .btn--outline { border-color: rgba(8, 127, 87, 0.55); }
+
+/* Proceso (azul): paso activo más legible sobre el fondo azul */
+.theme-blue .step.is-active { background: rgba(255, 255, 255, 0.08); }
+
+/* Materiales (claro): la tarjeta final pasa a verde profundo */
+.theme-light .mat__last {
+  --tx: #e9f4ef; --tx-2: #cfe5db;
+  color: var(--tx);
+  background: linear-gradient(160deg, #0f5c43, #0a3d2e);
+  border-color: rgba(201, 160, 99, 0.55);
+}
+
+/* Alcance (claro): cifras con degradado oscuro */
+.theme-light .fact dd span { background-image: linear-gradient(180deg, var(--tx), #2f9c78); }
+
+/* ==========================================================================
+   CTA FINAL (bloque verde esmeralda)
    ========================================================================== */
 .final {
   position: relative; isolation: isolate; overflow: hidden;
